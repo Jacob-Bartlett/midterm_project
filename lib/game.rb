@@ -13,5 +13,5 @@ class Game
       @players = []
       @pot = 0
     end
-    
+
 end

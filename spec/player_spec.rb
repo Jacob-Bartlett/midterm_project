@@ -38,7 +38,7 @@ RSpec.describe Player do
       @player.get_cards(cards)
     end
 
-    it "Discards the cards from the hand" do
+    it "Discards the cards from the Player's hand" do
       allow(@player).to receive(:gets).and_return("1 2\n")
       @player.discard
       expect(@player.hand).to be_empty

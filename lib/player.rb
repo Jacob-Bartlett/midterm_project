@@ -49,6 +49,8 @@ class Player
         end
     end
 
+    # Function to allow the player to discard cards. Starts by showing prompt, splits that inputs and parses it (correcting the indices)
+    # Then sorts the indices and delete's user's unwanted cards
     def discard
         puts "Current hand:"
         
@@ -67,7 +69,8 @@ class Player
 
         indexes.sort.reverse_each do |index|
             if index.between?(0, @hand.cards.size - 1)
-            @hand.delete_at(index)  
+                @hand.delete_at(index)
+            end
         end
     end
 end

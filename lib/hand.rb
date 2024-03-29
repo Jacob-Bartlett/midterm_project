@@ -12,8 +12,13 @@ class Hand
     # Function to show the current hand that the player has
     def show_hand
         @cards.each do |card|
-            puts card
+            puts "#{card.value}, #{card.suit}"
         end
+    end
+
+    # Function to delete cards at a certain index that could be called from the hand class
+    def delete_at(index)
+        @cards.delete_at(index)
     end
 
     # Function if a pair exist inside of a hand

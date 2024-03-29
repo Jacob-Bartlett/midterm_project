@@ -5,7 +5,7 @@ require_relative '../lib/hand'
 # Test for checking if the cards dealt into the hand from the deck match
 describe Deck do
     describe '#deal' do
-        it 'checks if the cards dealt into the hand from the deck match' do
+        it "Checks if the cards dealt into the hand from the deck match" do
         deck = Deck.new
         hand = Hand.new([])
 

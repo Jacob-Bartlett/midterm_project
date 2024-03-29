@@ -7,17 +7,18 @@ require_relative 'player'
 
 class Game
 
-    # Init function to "set up" the class    
+    # Init function to "set up" the game  
     def initialize(num_players, start_pot)
       @deck = Deck.new
       @players = []
       (1..num_players).each do |i|
         @players.push(Player.new(start_pot))
       end
-      @pot = 0
+      @pot = 0 + start_pot
       @init_bet = 2
     end
 
+    # Function to start the first phase of poker also known as the first betting round
     def start_bet_round
       @players.each do |player|
         puts "Your turn to start betting"
@@ -25,6 +26,7 @@ class Game
       end
     end
 
+    # Function to start the second phase in poker also know as the discard round
     def discard_round
       @players.each do |player|
         puts "Your turn to discard"
@@ -32,6 +34,7 @@ class Game
       end
     end
 
+    #  Function to start the third phase in poker which is the final betting round
     def final_bet_round
       @players.each do |player|
         puts "Your turn to finish betting"
@@ -39,6 +42,7 @@ class Game
       end
     end
 
+    # Function to start the meat of the game.rb, this takes the players action and calls the needed functions.
     def player_bet(player)
       loop do
         puts "Info: Your pot is #{player.pot}, game's pot is #{@pot}, your hand #{player.hand.show_hand}"
@@ -65,6 +69,7 @@ class Game
       end
     end
 
+    # Function to decide who is the winner out of two hands
     def winner
       player_one = @players[0].hand.rank
       player_two = @players[1].hand.rank
@@ -80,6 +85,7 @@ class Game
       end
     end
 
+    # Function to start the game flow
     def round
       @players.each do |player|
         @deck.deal(5, player)
@@ -90,6 +96,3 @@ class Game
       winner
     end
 end
-
-game = Game.new(2, 10)
-game.round

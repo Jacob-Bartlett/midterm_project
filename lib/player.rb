@@ -10,18 +10,18 @@ class Player
 
     # Init function to "set up" the class
     def initialize(pot)
-      @hand = []
+      @hand = Hand.new([])
       @pot = pot
     end
     
     # Function for a player to get cards from the current deck as a Hand object
     def get_cards(cards)
-      @hand += cards
+      @hand.get_cards(cards)
     end
 
     # Function for the player to fold
     def fold
-        @hand.clear
+        @hand = Hand.new([])
         puts "Player has folded"
     end
 
@@ -49,4 +49,25 @@ class Player
         end
     end
 
+    def discard
+        puts "Current hand:"
+        
+        @hand.show_hand
+
+        puts "Enter what cards you want removed:"
+        user_input = gets.chomp.split(' ')
+
+        indexes = []
+        user_input.each do |index|
+            correct_index = index.to_i - 1
+            indexes.push(correct_index)
+        end
+
+        
+
+        indexes.sort.reverse_each do |index|
+            if index.between?(0, @hand.cards.size - 1)
+            @hand.delete_at(index)  
+        end
+    end
 end
